@@ -4,22 +4,27 @@
 # - Fellow has name, nationality, happiness_level and abilities to eat (increases happiness) and teach (decreases happiness)
 # - School has EITs and Fellows
 
-class EIT:
+class Person:
 
-    def __init__(self, name, nationality, fun_fact):
+    def __init__(self, name, nationality):
         self.name = name
         self.nationality = nationality
+
+
+class EIT(Person):
+
+    def __init__(self, name, nationality, fun_fact):
+        super().__init__(name, nationality)
         self.fun_fact = fun_fact
 
     def recite(self, eit_name):
         print(self.fun_fact)
 
 
-class Fellow:
+class Fellow(Person):
 
     def __init__(self, name, nationality, happiness_level=5):
-        self.name = name
-        self.nationality = nationality
+        super().__init__(name, nationality)
         self.happiness_level = happiness_level
 
     def eat(self, fellow):
@@ -74,6 +79,7 @@ class School:
                         return print("{} has taught the EITs".format(fellow.name))
                     else:
                         print("That is not a fellow!")
+
 
 runmest = School()
 runmest.loop()
