@@ -22,7 +22,7 @@ class EIT(Person):#Class for EITs' unique properties
 
 
 class Fellow(Person):#class for fellows unique properties
-    num_fellows = 0
+    num_fellows = 0#static field to keep count of fellows
     def __init__(self, name, nationality, happiness_level=5):#happiness level has a default value of 5 which increases or decreases depending on fellows behavior
         super().__init__(name, nationality)
         self.happiness_level = happiness_level
@@ -44,11 +44,11 @@ class School:
         self.eits.append(new_eit)
 
     def add_fellow(self, new_fellow):#Add a fellow to the fellows list
-        if Fellow.num_fellows == 4:
-            raise Exception("We can only afford 4 fellows at a time")
+        if Fellow.num_fellows == 4:#check if max number of fellow(the value) has beed reached
+            raise Exception("We can only afford 4 fellows at a time")#raise exception if "if" condition is satisfied
             
         else:
-            self.fellows.append(new_fellow)
+            self.fellows.append(new_fellow)#add new fellow to fellows list
             Fellow.num_fellows += 1
 
     def loop(self):
